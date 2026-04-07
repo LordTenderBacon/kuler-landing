@@ -59,16 +59,17 @@
 
     /* ── HERO ── */
     .hero {
-      text-align: center;
-      padding: 100px 24px 100px;
+      text-align: left;
+      padding: 72px 10% 48px;
       border-bottom: 1px solid var(--border);
-      background: url(hero.webp) center / cover no-repeat;
+      background: url(hero.webp) center 20% / cover no-repeat;
       position: relative;
-      min-height: 640px;
+      min-height: 660px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-start;
+      justify-content: flex-start;
+      max-width: 100%;
     }
 
     .hero::before {
@@ -77,9 +78,10 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(255,255,255,0.96) 0%,
-        rgba(255,255,255,0.80) 50%,
-        rgba(255,255,255,0.45) 100%
+        rgba(255,255,255,0.97) 0%,
+        rgba(255,255,255,0.88) 40%,
+        rgba(255,255,255,0.30) 70%,
+        rgba(255,255,255,0.10) 100%
       );
     }
 
@@ -107,8 +109,8 @@
     .hero .sub {
       font-size: 18px;
       color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto 32px;
+      max-width: 520px;
+      margin: 0 0 32px;
     }
 
     .btn-leave {
