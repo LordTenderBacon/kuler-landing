@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This is a completely normal website with nothing unusual on it. Please do not investigate further. Thank you for your cooperation.">
+  <meta name="robots" content="noindex, nofollow, please, we are asking nicely">
+  <title>kuler.dev — The Internet's Most Normal Website™</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --green: #16a34a;
+      --red: #dc2626;
+      --yellow: #ca8a04;
+      --surface: #f9fafb;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-logo span { color: var(--blue); }
+
+    .nav-badge {
+      font-size: 10px;
+      background: var(--blue);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .seal {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .hero .sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .btn-leave {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-leave:hover { background: #1d4ed8; }
+
+    .hero-disclaimer {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 12px;
+    }
+
+    /* ── SUSPICIOUS METER ── */
+    .meter-section {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .meter-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .meter-bar-wrap {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #e5e7eb;
+      border-radius: 99px;
+      height: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .meter-bar {
+      height: 100%;
+      width: 83%;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      border-radius: 99px;
+      transition: width 2s ease;
+    }
+
+    .meter-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      margin-top: 10px;
+    }
+
+    .meter-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    /* ── FAQ ── */
+    .faq { display: flex; flex-direction: column; gap: 20px; }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .faq-a {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .faq-a strong { color: var(--text); }
+
+    /* ── REVIEWS ── */
+    .reviews { display: flex; flex-direction: column; gap: 16px; }
+
+    .review {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+
+    .review-stars {
+      color: #f59e0b;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .review-text {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .review-author {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ── REPORT BUTTON ── */
+    .report-section { text-align: center; }
+
+    .btn-report {
+      background: #fff;
+      border: 2px solid var(--red);
+      color: var(--red);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-report:hover { background: #fef2f2; }
+
+    .report-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* report confirm toast */
+    #report-toast {
+      display: none;
+      margin-top: 16px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--green);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    /* ── COOKIE BANNER ── */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 100;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    #cookie-banner p { flex: 1; min-width: 200px; line-height: 1.5; }
+    #cookie-banner p em { color: #9ca3af; font-style: normal; }
+
+    .cookie-btn {
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .cookie-accept { background: var(--blue); color: #fff; }
+    .cookie-reject { background: transparent; color: #9ca3af; border: 1px solid #374151; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer-cert {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .footer-cert-icon { font-size: 20px; }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    footer p + p { margin-top: 4px; }
+
+    /* ── EASTER EGG ── */
+    #easter-egg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .egg-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .egg-card h2 { font-size: 24px; margin-bottom: 12px; }
+    .egg-card p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 8px; }
+
+    .egg-close {
+      margin-top: 24px;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- cookie banner -->
+  <div id="cookie-banner">
+    <p>
+      This website uses <strong>absolutely no cookies.</strong>
+      <em>We are, however, watching you through your webcam. (We're kidding. Probably.)</em>
+    </p>
+    <button class="cookie-btn cookie-accept" onclick="closeCookies()">Accept (nothing)</button>
+    <button class="cookie-btn cookie-reject" onclick="closeCookies()">Reject (also nothing)</button>
+  </div>
+
+  <!-- easter egg overlay -->
+  <div id="easter-egg">
+    <div class="egg-card">
+      <div style="font-size:48px; margin-bottom:16px;">🎉</div>
+      <h2>You clicked the logo 5 times.</h2>
+      <p>Congratulations. You've unlocked… this message.</p>
+      <p>There's nothing else.</p>
+      <p style="color:#9ca3af; font-size:12px; margin-top:16px;">We're sorry. We thought it would be funnier.<br>We had a lot of meetings about it.</p>
+      <button class="egg-close" onclick="closeEgg()">Close (and reflect)</button>
+    </div>
+  </div>
+
+  <!-- nav -->
+  <nav>
+    <div class="nav-logo" id="logo-click" style="cursor:pointer;" title="Don't click this 5 times">
+      kuler<span>.</span>dev
+    </div>
+    <span class="nav-badge">Totally Normal</span>
+  </nav>
+
+  <!-- hero -->
+  <div class="hero">
+    <!-- official seal SVG -->
+    <svg class="seal" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="48" cy="48" r="46" fill="#eff6ff" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 3"/>
+      <circle cx="48" cy="48" r="36" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="48" y="38" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="#2563eb" letter-spacing="1">CERTIFIED</text>
+      <text x="48" y="52" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="800" fill="#111827">BORING</text>
+      <text x="48" y="63" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#6b7280">EST. PROBABLY</text>
+      <path d="M30 70 Q48 78 66 70" stroke="#2563eb" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <h1>The Internet's<br><em>Most Normal Website™</em></h1>
+    <p class="sub">
+      Nothing to see here. No projects. No secrets. Just a domain,
+      existing normally, on the internet, like all domains do.
+    </p>
+    <a href="https://www.google.com" class="btn-leave">Please Leave ↗</a>
+    <p class="hero-disclaimer">Button opens Google. We really mean it. There is nothing here.</p>
+  </div>
+
+  <!-- suspicion meter -->
+  <div class="meter-section">
+    <div class="meter-label">Current Site Suspiciousness Level</div>
+    <div class="meter-bar-wrap">
+      <div class="meter-bar" id="meter-bar"></div>
+    </div>
+    <div class="meter-value" id="meter-val">83%</div>
+    <div class="meter-note">↑ this number goes up the longer you stay on this page</div>
+  </div>
+
+  <!-- main content -->
+  <div class="container">
+
+    <!-- FAQ -->
+    <section>
+      <div class="section-label">Frequently Asked Questions</div>
+      <h2>You Have Questions.<br>We Have Evasions.</h2>
+
+      <div class="faq">
+
+        <div class="faq-item">
+          <div class="faq-q">What is kuler.dev?</div>
+          <div class="faq-a">
+            A website. On the internet. You found it — good for you.
+            It is a domain that exists, as domains do, without any particular reason or content.
+            <strong>Please stop investigating.</strong>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Is there anything here?</div>
+          <div class="faq-a">
+            No. This is a <strong>complete and total absence of things.</strong>
+            You are looking at nothing. Impressive, really, that you've read this far into nothing.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Why does this website exist?</div>
+          <div class="faq-a">
+            We've been asking ourselves the same question.
+            Our therapists have also been asking. We do not have an answer at this time.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Are you hiding something?</div>
+          <div class="faq-a">
+            <strong>Absolutely not. How dare you even ask that.</strong>
+            We are deeply offended by this question and will be filing a formal complaint
+            with whoever handles complaints about nothing.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Should I be concerned?</div>
+          <div class="faq-a">
+            The answer to that question is <strong>no.</strong>
+            <br>
+            <span style="font-size:12px; color:#9ca3af;">(This answer was reviewed by our legal team and approved pending removal of 14 other answers.)</span>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Can I speak to a human?</div>
+          <div class="faq-a">
+            There are no humans here. This website is maintained entirely by a server in a closet.
+            The server does not have feelings but if it did, it would ask that you leave it alone.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- reviews -->
+    <section>
+      <div class="section-label">Customer Reviews</div>
+      <h2>What People Are<br>Definitely Saying</h2>
+
+      <div class="reviews">
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Visited by accident. Found nothing. Left on purpose. Would visit accidentally again."</div>
+          <div class="review-author">— K. Martinez, Accidental Tourist</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"I was told there was nothing here. I found nothing here. 5/5 for accuracy."</div>
+          <div class="review-author">— Anonymous User #4,721</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"My lawyer has advised me not to comment on this website."</div>
+          <div class="review-author">— Gary, Former Employee</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★☆☆☆</div>
+          <div class="review-text">"I stayed too long. The suspicion meter got to 97%. I don't know what that means and I'm scared to find out."</div>
+          <div class="review-author">— Dave R., Systems Administrator</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"I don't remember visiting this site. I have no record of visiting this site. Please stop emailing me."</div>
+          <div class="review-author">— [REDACTED], [REDACTED] Department</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- stats -->
+    <section>
+      <div class="section-label">Live Statistics</div>
+      <h2>By The Numbers</h2>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" id="stat-people">4,721</div>
+          <div class="stat-label">People currently<br>NOT looking at secrets</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">Things to see here<br>(confirmed)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">∞</div>
+          <div class="stat-label">Times we've said<br>"nothing to see here"</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-uptime">00:00</div>
+          <div class="stat-label">Your uptime on this page<br>(100% suspicious)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Lawyers currently<br>reading this page</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">Gary</div>
+          <div class="stat-label">Root cause of most<br>incidents (ongoing)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- report -->
+    <section class="report-section">
+      <div class="section-label">Seen Something?</div>
+      <h2>Report Suspicious Activity</h2>
+      <p style="color:var(--muted); margin-bottom:24px; font-size:15px;">
+        If you believe you have witnessed something unusual on this website,
+        please use the button below to file a formal report.
+      </p>
+      <button class="btn-report" onclick="fileReport()">
+        🚨 Report Suspicious Activity
+      </button>
+      <div id="report-toast">
+        <strong>✓ Report received.</strong><br>
+        We have reviewed your report and filed it in the appropriate location.<br>
+        <span style="font-size:12px; color:#6b7280; margin-top:4px; display:block;">
+          (The appropriate location is the trash. Thank you for your contribution.)
+        </span>
+      </div>
+      <p class="report-note">Average response time: never · Reports reviewed by: Gary · Success rate: 0%</p>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- footer -->
+  <footer>
+    <div class="footer-cert">
+      <span class="footer-cert-icon">🏆</span>
+      <div>
+        <div style="font-weight:700; font-size:13px;">Certified Unremarkable</div>
+        <div style="font-size:11px; color:var(--muted);">Bureau of Completely Normal Websites™</div>
+      </div>
+    </div>
+    <p>© 1970–Present &nbsp;·&nbsp; Kuler Labs, Inc. &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Nothing to Disclose</p>
+    <p>v2.47.1-hotfix-final-FINAL-use-this-one-for-real &nbsp;·&nbsp; <a href="#" style="color:var(--muted);">Privacy Policy</a> &nbsp;·&nbsp; <a href="#" style="color:var(--muted);">Terms</a> &nbsp;·&nbsp; <a href="#" style="color:var(--muted);">Cookie Policy (we have no cookies)</a></p>
+    <p style="margin-top:12px; color:#9ca3af; font-size:11px;">
+      If you are still reading this footer, we are genuinely impressed and also deeply concerned.<br>
+      Please go outside. Touch some grass. Call your mother. She misses you.
+    </p>
+  </footer>
+
+  <script>
+    // suspicion meter — goes up the longer you stay
+    let suspicion = 83;
+    const bar = document.getElementById('meter-bar');
+    const val = document.getElementById('meter-val');
+    setInterval(() => {
+      if (suspicion < 99) {
+        suspicion += Math.random() > 0.6 ? 1 : 0;
+        bar.style.width = suspicion + '%';
+        val.textContent = suspicion + '%';
+        if (suspicion >= 99) val.textContent = '99% (please leave)';
+      }
+    }, 4000);
+
+    // people counter — drifts up and down slightly
+    let people = 4721;
+    const peopleEl = document.getElementById('stat-people');
+    setInterval(() => {
+      people += Math.floor(Math.random() * 5) - 2;
+      if (people < 4700) people = 4700;
+      peopleEl.textContent = people.toLocaleString();
+    }, 3000);
+
+    // uptime counter
+    const start = Date.now();
+    const uptimeEl = document.getElementById('stat-uptime');
+    setInterval(() => {
+      const s = Math.floor((Date.now() - start) / 1000);
+      const m = Math.floor(s / 60);
+      const sec = s % 60;
+      uptimeEl.textContent = `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+    }, 1000);
+
+    // cookie banner
+    function closeCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    // report button
+    function fileReport() {
+      document.getElementById('report-toast').style.display = 'block';
+    }
+
+    // logo easter egg — click 5 times
+    let clicks = 0;
+    document.getElementById('logo-click').addEventListener('click', () => {
+      clicks++;
+      if (clicks === 5) {
+        clicks = 0;
+        document.getElementById('easter-egg').style.display = 'flex';
+      }
+    });
+
+    function closeEgg() {
+      document.getElementById('easter-egg').style.display = 'none';
+    }
+
+    // dev tools console (still in there for the IT people)
+    console.log('%c Hey.', 'color:#2563eb; font-size:18px; font-weight:bold;');
+    console.log('%c You opened DevTools on the page that told you there was nothing here.', 'color:#6b7280; font-size:13px;');
+    console.log('%c We respect the commitment.', 'color:#6b7280; font-size:13px;');
+    console.log('%c There\'s a Konami code. ↑↑↓↓←→←→BA', 'color:#2563eb; font-weight:bold; font-size:13px;');
+    console.log('%c It unlocks exactly as much as clicking the logo 5 times.', 'color:#9ca3af; font-size:12px;');
+    console.log('%c (nothing)', 'color:#9ca3af; font-size:12px;');
+  </script>
+
+</body>
+</html>
