@@ -111,6 +111,25 @@
       margin-top: 12px;
     }
 
+    .hero-img-wrap {
+      margin: 32px auto 0;
+      max-width: 320px;
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      border: 2px solid var(--border);
+    }
+
+    .hero-img-caption {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
     /* ── SUSPICIOUS METER ── */
     .meter-section {
       background: var(--surface);
@@ -458,6 +477,10 @@
     </p>
     <a href="https://www.google.com" class="btn-leave">Please Leave ↗</a>
     <p class="hero-disclaimer">Button opens Google. We really mean it. There is nothing here.</p>
+    <div class="hero-img-wrap">
+      <img src="hero.webp" alt="Completely normal man holding a sign that says NOTHING SUSPICIOUS HERE, surrounded by red flags he is definitely not noticing">
+      <p class="hero-img-caption">Artist's depiction of the site owner. All flags are decorative.</p>
+    </div>
   </div>
 
   <!-- suspicion meter -->
@@ -466,7 +489,7 @@
     <div class="meter-bar-wrap">
       <div class="meter-bar" id="meter-bar"></div>
     </div>
-    <div class="meter-value" id="meter-val">83%</div>
+    <div class="meter-value" id="meter-val">0%</div>
     <div class="meter-note">↑ this number goes up the longer you stay on this page</div>
   </div>
 
@@ -649,7 +672,7 @@
 
   <script>
     // suspicion meter — goes up the longer you stay
-    let suspicion = 83;
+    let suspicion = 0;
     const bar = document.getElementById('meter-bar');
     const val = document.getElementById('meter-val');
     bar.style.width = suspicion + '%';
