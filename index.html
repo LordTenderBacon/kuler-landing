@@ -257,6 +257,88 @@
       color: var(--muted);
     }
 
+    /* ── TEAM ── */
+    .team-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      background: var(--surface);
+    }
+
+    @media (max-width: 520px) {
+      .team-card { flex-direction: column; align-items: center; text-align: center; }
+    }
+
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .team-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+
+    .team-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .team-bio {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .team-bio strong { color: var(--text); }
+
+    .team-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .team-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .team-tag.redacted {
+      background: #111827;
+      color: #111827;
+      border-color: #111827;
+      user-select: none;
+    }
+
+    .team-tag.redacted:hover {
+      color: #fff;
+    }
+
     /* ── STATS ── */
     .stats {
       display: grid;
@@ -479,7 +561,6 @@
     <p class="hero-disclaimer">Button opens Google. We really mean it. There is nothing here.</p>
     <div class="hero-img-wrap">
       <img src="hero.webp" alt="Completely normal man holding a sign that says NOTHING SUSPICIOUS HERE, surrounded by red flags he is definitely not noticing">
-      <p class="hero-img-caption">Artist's depiction of the site owner. All flags are decorative.</p>
     </div>
   </div>
 
@@ -626,6 +707,37 @@
         <div class="stat">
           <div class="stat-value">Gary</div>
           <div class="stat-label">Root cause of most<br>incidents (ongoing)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- team -->
+    <section>
+      <div class="section-label">The Team</div>
+      <h2>Behind Every Normal Website<br>Is a Completely Normal Person</h2>
+
+      <div class="team-card">
+        <div class="team-avatar">JP</div>
+        <div>
+          <div class="team-name">Jordan Pesavento</div>
+          <div class="team-title">Chief Normal Officer &amp; Definitely Not Hiding Anything</div>
+          <div class="team-bio">
+            Jordan is a software engineer at <strong>Sigmatech</strong> and the sole proprietor of kuler.dev.
+            He registered this domain for reasons he describes as "just a thing" and refuses to elaborate further.
+            His GitHub handle is <strong>LordTenderBacon</strong>, which is a completely normal username that requires no explanation whatsoever.
+            Jordan has never been investigated. The investigation was unrelated. The outcome is not public record.
+            <br><br>
+            In his free time Jordan enjoys <strong>normal hobbies</strong>, maintaining <strong>an undisclosed number</strong> of side projects,
+            and telling people this website is "basically done."
+            It has been "basically done" for an undisclosed period of time.
+          </div>
+          <div class="team-meta">
+            <span class="team-tag">GitHub: LordTenderBacon</span>
+            <span class="team-tag">Employer: Sigmatech</span>
+            <span class="team-tag">Side projects: ██</span>
+            <span class="team-tag redacted" title="hover to reveal">Clearance Level: ████████</span>
+            <span class="team-tag">Threat level: Gary</span>
+          </div>
         </div>
       </div>
     </section>
