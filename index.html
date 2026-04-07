@@ -140,7 +140,7 @@
 
     .meter-bar {
       height: 100%;
-      width: 83%;
+      width: 0%;
       background: linear-gradient(90deg, #2563eb, #7c3aed);
       border-radius: 99px;
       transition: width 2s ease;
@@ -652,9 +652,11 @@
     let suspicion = 83;
     const bar = document.getElementById('meter-bar');
     const val = document.getElementById('meter-val');
+    bar.style.width = suspicion + '%';
+    val.textContent = suspicion + '%';
     setInterval(() => {
       if (suspicion < 99) {
-        suspicion += Math.random() > 0.6 ? 1 : 0;
+        suspicion += 1;
         bar.style.width = suspicion + '%';
         val.textContent = suspicion + '%';
         if (suspicion >= 99) val.textContent = '99% (please leave)';
