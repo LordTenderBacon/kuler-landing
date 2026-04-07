@@ -62,7 +62,7 @@
       text-align: left;
       padding: 72px 10% 48px;
       border-bottom: 1px solid var(--border);
-      background: url(hero.webp) center 20% / cover no-repeat;
+      background: url(hero.webp) 68% 20% / cover no-repeat;
       position: relative;
       min-height: 660px;
       display: flex;
@@ -76,21 +76,30 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.97) 0%,
-        rgba(255,255,255,0.88) 40%,
-        rgba(255,255,255,0.30) 70%,
-        rgba(255,255,255,0.10) 100%
-      );
+      background: rgba(255,255,255,0.08);
     }
 
-    .hero > * { position: relative; z-index: 1; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 36px 44px;
+      max-width: 560px;
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    }
 
     .seal {
-      width: 96px;
-      height: 96px;
-      margin: 0 auto 24px;
+      position: absolute;
+      top: 28px;
+      right: 32px;
+      width: 88px;
+      height: 88px;
+      z-index: 2;
+      opacity: 0.92;
     }
 
     .hero h1 {
@@ -546,7 +555,7 @@
 
   <!-- hero -->
   <div class="hero">
-    <!-- official seal SVG -->
+    <!-- seal — corner stamp -->
     <svg class="seal" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="48" cy="48" r="46" fill="#eff6ff" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 3"/>
       <circle cx="48" cy="48" r="36" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
@@ -556,13 +565,15 @@
       <path d="M30 70 Q48 78 66 70" stroke="#2563eb" stroke-width="1.5" fill="none"/>
     </svg>
 
-    <h1>The Internet's<br><em>Most Normal Website™</em></h1>
-    <p class="sub">
-      A domain. A guy named Jordan. A Tuesday with too much free time.
-      This is the result. We're all very proud.
-    </p>
-    <a href="https://www.google.com" class="btn-leave">Absolutely Leave ↗</a>
-    <p class="hero-disclaimer">Opens Google. Jordan just wants you to have a nice day.</p>
+    <div class="hero-content">
+      <h1>The Internet's<br><em>Most Normal Website™</em></h1>
+      <p class="sub">
+        A domain. A guy named Jordan. A Tuesday with too much free time.
+        This is the result. We're all very proud.
+      </p>
+      <a href="https://www.google.com" class="btn-leave">Absolutely Leave ↗</a>
+      <p class="hero-disclaimer">Opens Google. Jordan just wants you to have a nice day.</p>
+    </div>
   </div>
 
   <!-- suspicion meter -->
@@ -581,60 +592,53 @@
     <!-- FAQ -->
     <section>
       <div class="section-label">Frequently Asked Questions</div>
-      <h2>You Have Questions.<br>We Have Answers. Sort Of.</h2>
+      <h2>Questions We Anticipated.<br>Answers We Prepared.</h2>
 
       <div class="faq">
 
         <div class="faq-item">
           <div class="faq-q">What is kuler.dev?</div>
           <div class="faq-a">
-            kuler.dev is Jordan's domain. Jordan is a software engineer. Jordan bought this domain,
-            thought "yeah I'll do something with that," and then you are looking at what he did with it.
-            <strong>It took a while. We think it was worth it.</strong>
+            It's a website Jordan made instead of doing the other things he said he would do.
+            <strong>We are all very proud of him.</strong>
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Is there actually anything here?</div>
+          <div class="faq-q">Is there anything here?</div>
           <div class="faq-a">
-            There's a suspicion meter, a man having a crisis at his desk, five fake reviews,
-            a whole FAQ section, and a bio about Jordan.
-            <strong>This is genuinely peak internet content.</strong> We're not taking feedback.
+            There's a corgi. <strong>The corgi is real.</strong> Everything else is between you and the suspicion meter.
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">What does "kuler" mean?</div>
           <div class="faq-a">
-            Jordan was asked this once. He made a face. We all nodded like we understood.
-            <strong>The matter has not been revisited.</strong>
+            Jordan was asked once. He made a face. We nodded. <strong>The matter has not been revisited.</strong>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Are you hiding something?</div>
           <div class="faq-a">
-            The shredder came with the desk. The briefcase belongs to a friend.
-            The cat showed up one day and simply stayed.
-            <strong>Everything is accounted for. Have a great day.</strong>
+            The shredder is decorative. <strong>This is our only statement on the matter.</strong>
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Should I bookmark this?</div>
+          <div class="faq-q">Should I send this to someone?</div>
           <div class="faq-a">
-            <strong>Yes, absolutely, 100%.</strong> Tell two friends. Tell three friends.
-            Tell your coworker Steve who thinks he's seen everything on the internet.
-            <span style="font-size:12px; color:#9ca3af; display:block; margin-top:6px;">(Steve hasn't seen this. Steve is about to have a day.)</span>
+            You already want to. You're just looking for permission.
+            <strong>This is your permission.</strong>
+            <span style="font-size:12px; color:#9ca3af; display:block; margin-top:6px;">(Send it to the person who thinks they've seen everything online. They haven't.)</span>
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Can I contact someone?</div>
+          <div class="faq-q">Can I contact Jordan?</div>
           <div class="faq-a">
-            Jordan is on GitHub as <strong>LordTenderBacon</strong> — a username he chose deliberately,
-            stands behind fully, and has never once apologized for.
-            He'd love to hear from you. Probably.
+            GitHub: <strong>LordTenderBacon</strong>. A username chosen deliberately, defended proudly,
+            and never once apologized for. He respects you enough not to explain it.
           </div>
         </div>
 
@@ -644,38 +648,38 @@
     <!-- reviews -->
     <section>
       <div class="section-label">Customer Reviews</div>
-      <h2>What Real People<br>Allegedly Said</h2>
+      <h2>Five Stars Across<br>The Board, Allegedly</h2>
 
       <div class="reviews">
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Visited by accident. Found nothing. Left on purpose. Came back on purpose. Something about this place just hits."</div>
-          <div class="review-author">— K. Martinez, Repeat Offender</div>
-        </div>
-
-        <div class="review">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">"I sent this to my entire team during standup. Nobody said anything. We all just nodded. It was the best meeting we've ever had."</div>
+          <div class="review-text">"I sent this to my entire team mid-standup. Nobody said anything for four seconds. Best meeting we've ever had."</div>
           <div class="review-author">— S. Park, Engineering Manager</div>
         </div>
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"The suspicion meter called me a legend at 99%. No website has ever called me a legend before. I cried a little. I'm not embarrassed about it."</div>
-          <div class="review-author">— Dave R., Systems Administrator</div>
+          <div class="review-text">"The suspicion meter called me a legend. No website has ever done that. I'm going to tell my kids about this someday."</div>
+          <div class="review-author">— Dave R., still here</div>
         </div>
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"I've been on the internet for 25 years. This is the most website I have ever seen. Five stars."</div>
-          <div class="review-author">— Gary, Internet Veteran</div>
+          <div class="review-text">"yeah"</div>
+          <div class="review-author">— Anonymous</div>
         </div>
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Showed this to my dog. He stared for 45 seconds, wagged his tail, and then looked at me like I finally understood something. He was right."</div>
-          <div class="review-author">— T. Baird, Dog Owner &amp; Philosopher</div>
+          <div class="review-text">"My corgi saw this page and sat down in front of the monitor and refused to move. He has been there for three hours. He seems content."</div>
+          <div class="review-author">— T. Baird, Corgi Owner</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"I've been on the internet since before most of you were born. This is the most website I have ever encountered."</div>
+          <div class="review-author">— Gary, 25-Year Internet Veteran</div>
         </div>
 
       </div>
@@ -689,27 +693,27 @@
       <div class="stats">
         <div class="stat">
           <div class="stat-value" id="stat-people">4,721</div>
-          <div class="stat-label">People having a completely<br>normal time right now</div>
+          <div class="stat-label">People currently<br>minding their business</div>
         </div>
         <div class="stat">
           <div class="stat-value">0</div>
-          <div class="stat-label">Scandals<br>(so far)</div>
+          <div class="stat-label">Scandals<br>(current count)</div>
         </div>
         <div class="stat">
           <div class="stat-value">∞</div>
-          <div class="stat-label">Times Jordan has said<br>"it's basically done"</div>
+          <div class="stat-label">Times Jordan said<br>"basically done"</div>
         </div>
         <div class="stat">
           <div class="stat-value" id="stat-uptime">00:00</div>
-          <div class="stat-label">Time you've invested<br>(zero regrets)</div>
+          <div class="stat-label">Your time here.<br>No refunds.</div>
         </div>
         <div class="stat">
-          <div class="stat-value">12</div>
-          <div class="stat-label">Dollars spent on this domain<br>per year. Worth it.</div>
+          <div class="stat-value">$12</div>
+          <div class="stat-label">Annual domain cost.<br>Debatable ROI.</div>
         </div>
         <div class="stat">
           <div class="stat-value">Gary</div>
-          <div class="stat-label">Just Gary. Always Gary.<br>We don't question it.</div>
+          <div class="stat-label">Just Gary.<br>Don't worry about it.</div>
         </div>
       </div>
     </section>
@@ -717,28 +721,27 @@
     <!-- team -->
     <section>
       <div class="section-label">The Team</div>
-      <h2>Behind Every Normal Website<br>Is a Completely Normal Person</h2>
+      <h2>One Guy.<br>Many Side Projects. This Website.</h2>
 
       <div class="team-card">
         <div class="team-avatar">JP</div>
         <div>
           <div class="team-name">Jordan Pesavento</div>
-          <div class="team-title">IT Help Desk · Aspiring Dev · Proprietor of This Website</div>
+          <div class="team-title">IT Help Desk at Sigmatech · Self-Taught Dev · Blonde</div>
           <div class="team-bio">
-            Jordan works the IT help desk at <strong>Sigmatech</strong>, which means he spends his days
-            fixing things that shouldn't be broken and explaining to people that have you tried turning it off and on again
-            is a real and valid question. In his spare time he builds software, collects side projects, and runs kuler.dev —
-            which is this.
+            Jordan keeps the lights on at <strong>Sigmatech's IT help desk</strong> — answering tickets,
+            resurrecting printers, and professionally asking if you've tried turning it off and on again.
+            Outside of work he builds real software, maintains too many side projects, and somehow also made this.
             <br><br>
-            He taught himself to code, is actively trying to impress people into hiring him as a developer,
-            and chose the GitHub handle <strong>LordTenderBacon</strong> at some point and has fully committed to it.
-            If you're a hiring manager reading this: <strong>he's really good, give him a shot.</strong>
+            He's self-taught, ships things, and is quietly trying to convince the internet to hire him as a developer.
+            If you're in a position to do that: <strong>he's the real deal. Take a look at <a href="https://github.com/LordTenderBacon" style="color:var(--blue);">LordTenderBacon</a> on GitHub.</strong>
+            Yes, that's the handle. No, he won't change it.
           </div>
           <div class="team-meta">
             <span class="team-tag">GitHub: LordTenderBacon</span>
-            <span class="team-tag">Day job: IT Help Desk</span>
-            <span class="team-tag">Dream job: Software Dev</span>
-            <span class="team-tag">Side projects: yes</span>
+            <span class="team-tag">Current: IT Help Desk</span>
+            <span class="team-tag">Goal: Software Dev</span>
+            <span class="team-tag">Corgi: yes</span>
             <span class="team-tag">Vibes: immaculate</span>
           </div>
         </div>
@@ -747,23 +750,23 @@
 
     <!-- report -->
     <section class="report-section">
-      <div class="section-label">Seen Something? Say Something.</div>
-      <h2>File a Report with Gary</h2>
+      <div class="section-label">Something Seem Off?</div>
+      <h2>Tell Gary About It</h2>
       <p style="color:var(--muted); margin-bottom:24px; font-size:15px;">
-        Witnessed something on this page that gave you pause? A vibe that felt slightly off?
-        A statistic that raised an eyebrow? Gary is standing by.
+        Noticed something suspicious? A stat that felt wrong? A vibe you can't place?
+        Gary is standing by. Gary has been standing by for a while now. Gary is fine.
       </p>
       <button class="btn-report" onclick="fileReport()">
         🚨 Report Something to Gary
       </button>
       <div id="report-toast">
         <strong>✓ Gary has been notified.</strong><br>
-        Gary says thank you. Gary is on it. Gary just spilled his coffee but he's still on it.<br>
+        Gary said "oh interesting" and wrote something down. We don't know what he wrote.<br>
         <span style="font-size:12px; color:#6b7280; margin-top:4px; display:block;">
-          We believe in Gary. You should too.
+          We believe in Gary. Gary believes in himself. This is enough.
         </span>
       </div>
-      <p class="report-note">Response time: Gary-dependent · Outcome: Gary · We love Gary</p>
+      <p class="report-note">Avg. response time: Gary o'clock · Success rate: Gary% · Gary is doing his best</p>
     </section>
 
   </div><!-- /container -->
