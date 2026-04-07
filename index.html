@@ -60,9 +60,30 @@
     /* ── HERO ── */
     .hero {
       text-align: center;
-      padding: 72px 24px 56px;
+      padding: 80px 24px 80px;
       border-bottom: 1px solid var(--border);
+      background: url(hero.webp) center / cover no-repeat;
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.95) 0%,
+        rgba(255,255,255,0.82) 55%,
+        rgba(255,255,255,0.55) 100%
+      );
+    }
+
+    .hero > * { position: relative; z-index: 1; }
 
     .seal {
       width: 96px;
@@ -107,27 +128,8 @@
 
     .hero-disclaimer {
       font-size: 11px;
-      color: #9ca3af;
+      color: #6b7280;
       margin-top: 12px;
-    }
-
-    .hero-img-wrap {
-      margin: 32px auto 0;
-      max-width: 320px;
-    }
-
-    .hero-img-wrap img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      border: 2px solid var(--border);
-    }
-
-    .hero-img-caption {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-top: 8px;
-      font-style: italic;
     }
 
     /* ── SUSPICIOUS METER ── */
@@ -559,9 +561,6 @@
     </p>
     <a href="https://www.google.com" class="btn-leave">Please Leave ↗</a>
     <p class="hero-disclaimer">Button opens Google. We really mean it. There is nothing here.</p>
-    <div class="hero-img-wrap">
-      <img src="hero.webp" alt="Completely normal man holding a sign that says NOTHING SUSPICIOUS HERE, surrounded by red flags he is definitely not noticing">
-    </div>
   </div>
 
   <!-- suspicion meter -->
@@ -700,15 +699,15 @@
         </div>
         <div class="stat">
           <div class="stat-value" id="stat-uptime">00:00</div>
-          <div class="stat-label">Your uptime on this page<br>(100% suspicious)</div>
+          <div class="stat-label">Time spent here<br>(impressive dedication)</div>
         </div>
         <div class="stat">
           <div class="stat-value">3</div>
-          <div class="stat-label">Lawyers currently<br>reading this page</div>
+          <div class="stat-label">Lawyers who are<br>also having a great time</div>
         </div>
         <div class="stat">
           <div class="stat-value">Gary</div>
-          <div class="stat-label">Root cause of most<br>incidents (ongoing)</div>
+          <div class="stat-label">Guy who keeps showing up<br>and honestly we love him</div>
         </div>
       </div>
     </section>
@@ -756,13 +755,13 @@
         🚨 Report Suspicious Activity
       </button>
       <div id="report-toast">
-        <strong>✓ Report received.</strong><br>
-        We have reviewed your report and filed it in the appropriate location.<br>
+        <strong>✓ Report received!</strong><br>
+        We have forwarded your report to our dedicated response team.<br>
         <span style="font-size:12px; color:#6b7280; margin-top:4px; display:block;">
-          (The appropriate location is the trash. Thank you for your contribution.)
+          (The response team is Gary. Gary is very excited to help. Gary has no idea what is going on.)
         </span>
       </div>
-      <p class="report-note">Average response time: never · Reports reviewed by: Gary · Success rate: 0%</p>
+      <p class="report-note">Average response time: eventually · Reports reviewed by: Gary · Gary's success rate: Gary%</p>
     </section>
 
   </div><!-- /container -->
@@ -796,7 +795,7 @@
         suspicion += 1;
         bar.style.width = suspicion + '%';
         val.textContent = suspicion + '%';
-        if (suspicion >= 99) val.textContent = '99% (please leave)';
+        if (suspicion >= 99) val.textContent = '99% (you are a legend)';
       }
     }, 4000);
 
