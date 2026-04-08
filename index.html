@@ -143,52 +143,92 @@
       margin-top: 12px;
     }
 
-    /* ── SUSPICIOUS METER ── */
+    /* ── SUSPICION METER ── */
     .meter-section {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 32px 24px;
+      background: #0f172a;
+      border-bottom: 1px solid #1e293b;
+      padding: 28px 24px;
       text-align: center;
     }
 
-    .meter-label {
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
+    .scan-terminal {
+      max-width: 560px;
+      margin: 0 auto 20px;
+      background: #020617;
+      border: 1px solid #1e3a5f;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      text-align: left;
+      min-height: 148px;
+    }
+
+    .scan-line {
+      line-height: 1.85;
+      opacity: 0;
+      animation: fadeIn 0.15s forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .sc-ok   { color: #22c55e; }
+    .sc-warn { color: #f59e0b; }
+    .sc-blue { color: #60a5fa; }
+    .sc-dim  { color: #475569; }
+    .sc-red  { color: #f87171; }
+    .sc-white{ color: #e2e8f0; }
+
+    .meter-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
       margin-bottom: 10px;
     }
 
+    .meter-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #64748b;
+    }
+
+    .meter-pct {
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      line-height: 1;
+      min-width: 80px;
+      text-align: right;
+    }
+
     .meter-bar-wrap {
-      max-width: 400px;
-      margin: 0 auto;
-      background: #e5e7eb;
+      max-width: 520px;
+      margin: 0 auto 10px;
+      background: #1e293b;
       border-radius: 99px;
-      height: 20px;
+      height: 14px;
       overflow: hidden;
-      position: relative;
     }
 
     .meter-bar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #2563eb, #7c3aed);
       border-radius: 99px;
-      transition: width 2s ease;
+      transition: width 0.5s ease, background-color 1s ease;
+      background: #2563eb;
     }
 
-    .meter-value {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--text);
-      margin-top: 10px;
-    }
-
-    .meter-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 4px;
+    .meter-status {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 6px;
+      min-height: 20px;
+      font-style: italic;
+      transition: color 0.4s;
     }
 
     /* ── MAIN CONTENT ── */
@@ -527,10 +567,10 @@
   <div id="cookie-banner">
     <p>
       This website uses <strong>absolutely no cookies.</strong>
-      <em>It does, however, use good vibes. You cannot opt out of the good vibes.</em>
+      <em>It does, however, collect your vibes. You cannot opt out of the vibes. Legal reviewed this. Legal is also Jordan.</em>
     </p>
     <button class="cookie-btn cookie-accept" onclick="closeCookies()">Accept (nothing)</button>
-    <button class="cookie-btn cookie-reject" onclick="closeCookies()">Reject (also nothing)</button>
+    <button class="cookie-btn cookie-reject" onclick="closeCookies()">Decline (still nothing)</button>
   </div>
 
   <!-- easter egg overlay -->
@@ -538,16 +578,16 @@
     <div class="egg-card">
       <div style="font-size:48px; margin-bottom:16px;">🎉</div>
       <h2>You clicked the logo 5 times.</h2>
-      <p>Congratulations. You've unlocked… this message.</p>
-      <p>There's nothing else.</p>
-      <p style="color:#9ca3af; font-size:12px; margin-top:16px;">We're sorry. We thought it would be funnier.<br>We had a lot of meetings about it.</p>
-      <button class="egg-close" onclick="closeEgg()">Close (and reflect)</button>
+      <p>You are either an IT person testing things or you are extremely bored.</p>
+      <p>Either way: same energy. Jordan respects it.</p>
+      <p style="color:#9ca3af; font-size:12px; margin-top:16px;">There's a Konami code too.<br>It does exactly the same thing as this.<br>We had a meeting about it. The meeting was also this.</p>
+      <button class="egg-close" onclick="closeEgg()">Close (and reflect on your choices)</button>
     </div>
   </div>
 
   <!-- nav -->
   <nav>
-    <div class="nav-logo" id="logo-click" style="cursor:pointer;" title="Don't click this 5 times">
+    <div class="nav-logo" id="logo-click" style="cursor:pointer;" title="Don't.">
       kuler<span>.</span>dev
     </div>
     <span class="nav-badge">Totally Normal</span>
@@ -568,8 +608,8 @@
     <div class="hero-content">
       <h1>The Internet's<br><em>Most Normal Website™</em></h1>
       <p class="sub">
-        A domain. A guy named Jordan. A Tuesday with too much free time.
-        This is the result. We're all very proud.
+        A domain. A guy named Jordan. A corgi who was not consulted.
+        Three hours of a Tuesday nobody is getting back.
       </p>
       <a href="https://www.google.com" class="btn-leave">Absolutely Leave ↗</a>
       <p class="hero-disclaimer">Opens Google. Jordan just wants you to have a nice day.</p>
@@ -578,12 +618,15 @@
 
   <!-- suspicion meter -->
   <div class="meter-section">
-    <div class="meter-label">Current Site Suspiciousness Level</div>
+    <div class="scan-terminal" id="scan-terminal"></div>
+    <div class="meter-top">
+      <div class="meter-label">Suspicion Level</div>
+      <div class="meter-pct" id="meter-pct">0%</div>
+    </div>
     <div class="meter-bar-wrap">
       <div class="meter-bar" id="meter-bar"></div>
     </div>
-    <div class="meter-value" id="meter-val">0%</div>
-    <div class="meter-note">↑ this number goes up the longer you stay on this page</div>
+    <div class="meter-status" id="meter-status">Initializing threat assessment...</div>
   </div>
 
   <!-- main content -->
@@ -592,22 +635,25 @@
     <!-- FAQ -->
     <section>
       <div class="section-label">Frequently Asked Questions</div>
-      <h2>Questions We Anticipated.<br>Answers We Prepared.</h2>
+      <h2>Questions We Anticipated.<br>Answers We Prepared in a Hurry.</h2>
 
       <div class="faq">
 
         <div class="faq-item">
           <div class="faq-q">What is kuler.dev?</div>
           <div class="faq-a">
-            It's a website Jordan made instead of doing the other things he said he would do.
-            <strong>We are all very proud of him.</strong>
+            Jordan made this instead of finishing the other 11 side projects currently sitting in his GitHub.
+            <strong>We counted. It's 11.</strong> Could he have spent this time closing some of those open tickets? Technically yes.
+            He chose this. We support him. The tickets are still open.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Is there anything here?</div>
+          <div class="faq-q">Is there anything actually on this site?</div>
           <div class="faq-a">
-            There's a corgi. <strong>The corgi is real.</strong> Everything else is between you and the suspicion meter.
+            There's a live help desk queue above. <strong>The tickets are real in spirit.</strong> Karen has submitted three of them.
+            You know a Karen like this. Everyone does. She once filed a critical priority ticket because her monitor "looked different."
+            The monitor was fine. It was always fine.
           </div>
         </div>
 
@@ -619,18 +665,20 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Are you hiding something?</div>
+          <div class="faq-q">I'm in IT. Can I submit a ticket?</div>
           <div class="faq-a">
-            The shredder is decorative. <strong>This is our only statement on the matter.</strong>
+            The resolve button above handles tickets the same way most help desks do.
+            <strong>Click it. Don't read the ticket. Move on.</strong>
+            This is not a criticism. This is institutional knowledge.
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Should I send this to someone?</div>
           <div class="faq-a">
-            You already want to. You're just looking for permission.
-            <strong>This is your permission.</strong>
-            <span style="font-size:12px; color:#9ca3af; display:block; margin-top:6px;">(Send it to the person who thinks they've seen everything online. They haven't.)</span>
+            Send it to whoever in your office says "it's a computer thing" and shrugs.
+            <strong>They will understand immediately.</strong>
+            <span style="font-size:12px; color:#9ca3af; display:block; margin-top:6px;">Also fine to send to the person who just emailed IT asking why their monitor is dark. (The monitor is off. The monitor has always been off.)</span>
           </div>
         </div>
 
@@ -638,7 +686,8 @@
           <div class="faq-q">Can I contact Jordan?</div>
           <div class="faq-a">
             GitHub: <strong>LordTenderBacon</strong>. A username chosen deliberately, defended proudly,
-            and never once apologized for. He respects you enough not to explain it.
+            and never once apologized for. He is available for real software development opportunities.
+            Please do not ask him to fix your printer.
           </div>
         </div>
 
@@ -654,14 +703,14 @@
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"I sent this to my entire team mid-standup. Nobody said anything for four seconds. Best meeting we've ever had."</div>
-          <div class="review-author">— S. Park, Engineering Manager</div>
+          <div class="review-text">"I set this as my out-of-office auto-reply link. HR called. I said it was a documentation portal. They accepted this. I don't know why."</div>
+          <div class="review-author">— M. Fitzgerald, Systems Admin, still employed</div>
         </div>
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"The suspicion meter called me a legend. No website has ever done that. I'm going to tell my kids about this someday."</div>
-          <div class="review-author">— Dave R., still here</div>
+          <div class="review-text">"I clicked resolve on 47 tickets in a row. I felt nothing. Then I felt everything. This website fixed me."</div>
+          <div class="review-author">— T. Park, Help Desk Tier 1, 4 years counting</div>
         </div>
 
         <div class="review">
@@ -672,14 +721,14 @@
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"My corgi saw this page and sat down in front of the monitor and refused to move. He has been there for three hours. He seems content."</div>
-          <div class="review-author">— T. Baird, Corgi Owner</div>
+          <div class="review-text">"The ticket queue showed a ticket for 'computer says no' and I just closed my laptop and went home. It was 9am. Best decision of my career."</div>
+          <div class="review-author">— D. Reeves, Senior Network Engineer</div>
         </div>
 
         <div class="review">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"I've been on the internet since before most of you were born. This is the most website I have ever encountered."</div>
-          <div class="review-author">— Gary, 25-Year Internet Veteran</div>
+          <div class="review-text">"My corgi watched me scroll through this. He seemed to understand something I don't. He's been sitting in front of the monitor ever since. He seems content. I'm a little jealous."</div>
+          <div class="review-author">— T. Baird, Corgi Owner, IT Adjacent</div>
         </div>
 
       </div>
@@ -692,12 +741,12 @@
 
       <div class="stats">
         <div class="stat">
-          <div class="stat-value" id="stat-people">4,721</div>
-          <div class="stat-label">People currently<br>minding their business</div>
+          <div class="stat-value" id="stat-tickets">0</div>
+          <div class="stat-label">Tickets resolved with<br>"turn it off and on"</div>
         </div>
         <div class="stat">
           <div class="stat-value">0</div>
-          <div class="stat-label">Scandals<br>(current count)</div>
+          <div class="stat-label">Printers fixed<br>(they broke again)</div>
         </div>
         <div class="stat">
           <div class="stat-value">∞</div>
@@ -712,8 +761,8 @@
           <div class="stat-label">Annual domain cost.<br>Debatable ROI.</div>
         </div>
         <div class="stat">
-          <div class="stat-value">Gary</div>
-          <div class="stat-label">Just Gary.<br>Don't worry about it.</div>
+          <div class="stat-value">Karen</div>
+          <div class="stat-label">Top ticket submitter.<br>Every single time.</div>
         </div>
       </div>
     </section>
@@ -721,28 +770,30 @@
     <!-- team -->
     <section>
       <div class="section-label">The Team</div>
-      <h2>One Guy.<br>Many Side Projects. This Website.</h2>
+      <h2>One Guy.<br>Eleven Repos. This Website.</h2>
 
       <div class="team-card">
         <div class="team-avatar">JP</div>
         <div>
           <div class="team-name">Jordan Pesavento</div>
-          <div class="team-title">IT Help Desk at Sigmatech · Self-Taught Dev · Blonde</div>
+          <div class="team-title">IT Help Desk · Sigmatech · Self-Taught Dev · Corgi Owner · Blonde</div>
           <div class="team-bio">
-            Jordan keeps the lights on at <strong>Sigmatech's IT help desk</strong> — answering tickets,
-            resurrecting printers, and professionally asking if you've tried turning it off and on again.
-            Outside of work he builds real software, maintains too many side projects, and somehow also made this.
+            Jordan keeps the lights on at <strong>Sigmatech's IT help desk</strong> — resurrecting printers,
+            answering tickets filed at 4:58pm on a Friday, and calmly explaining what a browser cache is
+            for the fourth time this week to someone who will ask again next Tuesday.
             <br><br>
-            He's self-taught, ships things, and is quietly trying to convince the internet to hire him as a developer.
-            If you're in a position to do that: <strong>he's the real deal. Take a look at <a href="https://github.com/LordTenderBacon" style="color:var(--blue);">LordTenderBacon</a> on GitHub.</strong>
-            Yes, that's the handle. No, he won't change it.
+            After hours he builds real software. Not "I made a to-do app" software —
+            actual projects, shipped things, <strong>eleven repos deep</strong> and still going.
+            He's self-taught and genuinely good at it. If you're hiring devs and you've read this far,
+            go look at <strong><a href="https://github.com/LordTenderBacon" style="color:var(--blue);">LordTenderBacon</a> on GitHub.</strong>
+            Yes, that's the handle. No, he will not be changing it.
           </div>
           <div class="team-meta">
             <span class="team-tag">GitHub: LordTenderBacon</span>
-            <span class="team-tag">Current: IT Help Desk</span>
-            <span class="team-tag">Goal: Software Dev</span>
+            <span class="team-tag">Currently: IT Help Desk</span>
+            <span class="team-tag">Wants: Software Dev Role</span>
             <span class="team-tag">Corgi: yes</span>
-            <span class="team-tag">Vibes: immaculate</span>
+            <span class="team-tag redacted">Konami Code: known</span>
           </div>
         </div>
       </div>
@@ -753,20 +804,21 @@
       <div class="section-label">Something Seem Off?</div>
       <h2>Tell Gary About It</h2>
       <p style="color:var(--muted); margin-bottom:24px; font-size:15px;">
-        Noticed something suspicious? A stat that felt wrong? A vibe you can't place?
-        Gary is standing by. Gary has been standing by for a while now. Gary is fine.
+        A stat that felt wrong? A vibe you can't name? A printer-related concern?
+        Gary is on it. Gary has been on it since 8am. Gary brought his own lunch today.
+        Gary is doing his best.
       </p>
       <button class="btn-report" onclick="fileReport()">
         🚨 Report Something to Gary
       </button>
       <div id="report-toast">
         <strong>✓ Gary has been notified.</strong><br>
-        Gary said "oh interesting" and wrote something down. We don't know what he wrote.<br>
+        Gary said "hm" and highlighted something in yellow. We don't know what he highlighted.<br>
         <span style="font-size:12px; color:#6b7280; margin-top:4px; display:block;">
-          We believe in Gary. Gary believes in himself. This is enough.
+          He's going to circle back with you. Gary always circles back. Gary has never not circled back.
         </span>
       </div>
-      <p class="report-note">Avg. response time: Gary o'clock · Success rate: Gary% · Gary is doing his best</p>
+      <p class="report-note">Avg. response time: Gary o'clock · Resolution rate: Gary% · Gary is pacing slowly near the printer</p>
     </section>
 
   </div><!-- /container -->
@@ -780,40 +832,167 @@
         <div style="font-size:11px; color:var(--muted);">Bureau of Completely Normal Websites™</div>
       </div>
     </div>
-    <p>© This Year &nbsp;·&nbsp; Jordan Pesavento &nbsp;·&nbsp; Made with ☕ and too many browser tabs</p>
+    <p>© This Year &nbsp;·&nbsp; Jordan Pesavento &nbsp;·&nbsp; Made with ☕ and a concerning number of browser tabs open simultaneously</p>
     <p>v4.0.0-this-one-actually-works &nbsp;·&nbsp; <a href="#" style="color:var(--muted);">Privacy Policy</a> &nbsp;·&nbsp; <a href="#" style="color:var(--muted);">Terms</a> &nbsp;·&nbsp; <a href="#" style="color:var(--muted);">Cookie Policy (still no cookies)</a></p>
     <p style="margin-top:12px; color:#9ca3af; font-size:11px;">
-      You read the whole footer. That's extremely cool of you and we want you to know it.<br>
-      If you're hiring devs, scroll back up. Jordan is right there. He's great.
+      You read the whole footer. You are a thorough person. Jordan respects thorough people.<br>
+      If you're hiring devs, scroll back up. Jordan is right there. He fixed your printer. He deserves better.
     </p>
   </footer>
 
   <script>
-    // suspicion meter — goes up the longer you stay
+    // ── SUSPICION METER — tracks real user behavior ───────────────
     let suspicion = 0;
-    const bar = document.getElementById('meter-bar');
-    const val = document.getElementById('meter-val');
-    bar.style.width = suspicion + '%';
-    val.textContent = suspicion + '%';
-    setInterval(() => {
-      if (suspicion < 99) {
-        suspicion += 1;
-        bar.style.width = suspicion + '%';
-        val.textContent = suspicion + '%';
-        if (suspicion >= 99) val.textContent = '99% (you are a legend)';
+    let scanDone = false;
+    const bar    = document.getElementById('meter-bar');
+    const pct    = document.getElementById('meter-pct');
+    const status = document.getElementById('meter-status');
+
+    const statusMessages = [
+      [0,   "All clear. Nothing to report. Totally normal visit."],
+      [5,   "Minor activity detected. Probably nothing."],
+      [15,  "User appears to be... looking around. Logging."],
+      [28,  "Multiple interactions recorded. Jordan has been informed."],
+      [42,  "You're really in here huh. Noted."],
+      [55,  "Elevated engagement. This is fine. Everything is fine."],
+      [68,  "You've been here a while. Just saying."],
+      [80,  "We're not saying anything. We're just watching."],
+      [91,  "You are SO close. We genuinely don't know what happens at 100%."],
+      [99,  "⚠ MAXIMUM SUSPICION — You are a legend. Jordan is proud of you."],
+    ];
+
+    const barColors = [
+      [0,  '#2563eb'],
+      [40, '#7c3aed'],
+      [65, '#ea580c'],
+      [85, '#dc2626'],
+    ];
+
+    function getStatus(n) {
+      let msg = statusMessages[0][1];
+      for (const [thresh, text] of statusMessages) {
+        if (n >= thresh) msg = text;
       }
-    }, 4000);
+      return msg;
+    }
 
-    // people counter — drifts up and down slightly
-    let people = 4721;
-    const peopleEl = document.getElementById('stat-people');
+    function getColor(n) {
+      let col = barColors[0][1];
+      for (const [thresh, c] of barColors) {
+        if (n >= thresh) col = c;
+      }
+      return col;
+    }
+
+    function addSuspicion(amt) {
+      if (!scanDone) return;
+      suspicion = Math.min(99, suspicion + amt);
+      bar.style.width = suspicion + '%';
+      bar.style.backgroundColor = getColor(suspicion);
+      pct.textContent = suspicion + '%';
+      if (suspicion >= 99) {
+        pct.textContent = '99%';
+        status.textContent = getStatus(99);
+        status.style.color = '#f87171';
+      } else {
+        status.textContent = getStatus(suspicion);
+        status.style.color = suspicion > 60 ? '#f59e0b' : '#64748b';
+      }
+    }
+
+    // scroll adds suspicion
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const now = Date.now();
+      if (now - lastScroll > 800) { addSuspicion(2); lastScroll = now; }
+    });
+
+    // clicks add suspicion (ignore meter section clicks)
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.meter-section')) addSuspicion(5);
+    });
+
+    // fast mouse movement
+    let lastX = 0, lastY = 0, lastMove = 0;
+    document.addEventListener('mousemove', e => {
+      const now = Date.now();
+      if (now - lastMove < 100) return;
+      const dx = e.clientX - lastX, dy = e.clientY - lastY;
+      const speed = Math.sqrt(dx*dx + dy*dy);
+      if (speed > 120) addSuspicion(1);
+      lastX = e.clientX; lastY = e.clientY; lastMove = now;
+    });
+
+    // DevTools detection — outer window size shrinks when devtools opens
+    let devToolsOpen = false;
     setInterval(() => {
-      people += Math.floor(Math.random() * 5) - 2;
-      if (people < 4700) people = 4700;
-      peopleEl.textContent = people.toLocaleString();
-    }, 3000);
+      const threshold = 160;
+      const opened = (window.outerWidth - window.innerWidth > threshold) ||
+                     (window.outerHeight - window.innerHeight > threshold);
+      if (opened && !devToolsOpen) {
+        devToolsOpen = true;
+        addSuspicion(25);
+        status.textContent = "DevTools detected. Jordan nods in respect. Still suspicious.";
+      } else if (!opened) { devToolsOpen = false; }
+    }, 1000);
 
-    // uptime counter
+    // passive time drip — +1 every 20 seconds, slow but inevitable
+    setInterval(() => addSuspicion(1), 20000);
+
+    // ── PAGE LOAD SCAN ───────────────────────────────────────────
+    const terminal = document.getElementById('scan-terminal');
+    const h = new Date().getHours();
+    const timeVerdict = h >= 22 || h < 6   ? '<span class="sc-red">late night browsing — deeply suspicious</span>'
+                      : h >= 9 && h < 17   ? '<span class="sc-warn">work hours — you\'re on the clock</span>'
+                      : h >= 17 && h < 22  ? '<span class="sc-ok">evening — acceptable</span>'
+                      :                      '<span class="sc-warn">very early — concerning</span>';
+
+    const ua = navigator.userAgent;
+    const browserName = ua.includes('Chrome') ? 'Chrome' : ua.includes('Firefox') ? 'Firefox' : ua.includes('Safari') ? 'Safari' : ua.includes('Edge') ? 'Edge' : 'something weird';
+    const browserVerdict = browserName === 'Chrome' ? '<span class="sc-ok">Chrome — fine, everyone uses Chrome</span>'
+                         : browserName === 'Firefox' ? '<span class="sc-ok">Firefox — a person of culture</span>'
+                         : browserName === 'Edge'    ? '<span class="sc-warn">Edge — did Windows make you do this</span>'
+                         :                            '<span class="sc-warn">' + browserName + ' — ok</span>';
+
+    const isMobile = /Mobi|Android/i.test(ua);
+    const deviceVerdict = isMobile
+      ? '<span class="sc-warn">mobile — you\'re doing this on your phone. bold.</span>'
+      : '<span class="sc-ok">desktop — respectable</span>';
+
+    const w = screen.width, wh = screen.height;
+    const screenVerdict = w >= 2560 ? '<span class="sc-warn">' + w + '×' + wh + ' — that\'s a big monitor. calm down.</span>'
+                        : w <= 1280 ? '<span class="sc-warn">' + w + '×' + wh + ' — a little small but we accept you</span>'
+                        :             '<span class="sc-ok">' + w + '×' + wh + ' — normal</span>';
+
+    const scanLines = [
+      '<span class="sc-blue">&gt; kuler.dev THREAT ASSESSMENT SYSTEM v2.3</span>',
+      '<span class="sc-dim">&gt; scanning visitor profile...</span>',
+      '<span class="sc-ok">[✓]</span> <span class="sc-white">identity</span> <span class="sc-dim">.............</span> <span class="sc-ok">probably human</span>',
+      '<span class="sc-ok">[✓]</span> <span class="sc-white">time of visit</span> <span class="sc-dim">........</span> ' + timeVerdict,
+      '<span class="sc-ok">[✓]</span> <span class="sc-white">browser</span> <span class="sc-dim">.............</span> ' + browserVerdict,
+      '<span class="sc-ok">[✓]</span> <span class="sc-white">device</span> <span class="sc-dim">...............</span> ' + deviceVerdict,
+      '<span class="sc-ok">[✓]</span> <span class="sc-white">screen resolution</span> <span class="sc-dim">.....</span> ' + screenVerdict,
+      '<span class="sc-warn">[?]</span> <span class="sc-white">open tabs</span> <span class="sc-dim">............</span> <span class="sc-warn">[redacted] — we can see the vibes</span>',
+      '<span class="sc-warn">[?]</span> <span class="sc-white">reason for visit</span> <span class="sc-dim">......</span> <span class="sc-red">unclear — most suspicious thing yet</span>',
+      '<span class="sc-dim">&gt; scan complete. monitoring for further activity.</span>',
+    ];
+
+    let lineIdx = 0;
+    function showNextLine() {
+      if (lineIdx >= scanLines.length) {
+        scanDone = true;
+        return;
+      }
+      const div = document.createElement('div');
+      div.className = 'scan-line';
+      div.innerHTML = scanLines[lineIdx++];
+      terminal.appendChild(div);
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(showNextLine, lineIdx === 1 ? 300 : lineIdx < 3 ? 400 : 280);
+    }
+    setTimeout(showNextLine, 600);
+
+    // ── UPTIME COUNTER ────────────────────────────────────────────
     const start = Date.now();
     const uptimeEl = document.getElementById('stat-uptime');
     setInterval(() => {
@@ -823,21 +1002,20 @@
       uptimeEl.textContent = `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
     }, 1000);
 
-    // cookie banner
+    // ── COOKIE BANNER ─────────────────────────────────────────────
     function closeCookies() {
       document.getElementById('cookie-banner').style.display = 'none';
     }
 
-    // report button
+    // ── REPORT BUTTON ─────────────────────────────────────────────
     function fileReport() {
       document.getElementById('report-toast').style.display = 'block';
     }
 
-    // logo easter egg — click 5 times
+    // ── LOGO EASTER EGG ──────────────────────────────────────────
     let clicks = 0;
     document.getElementById('logo-click').addEventListener('click', () => {
-      clicks++;
-      if (clicks === 5) {
+      if (++clicks === 5) {
         clicks = 0;
         document.getElementById('easter-egg').style.display = 'flex';
       }
@@ -847,13 +1025,26 @@
       document.getElementById('easter-egg').style.display = 'none';
     }
 
-    // dev tools console (still in there for the IT people)
-    console.log('%c Hey.', 'color:#2563eb; font-size:18px; font-weight:bold;');
-    console.log('%c You opened DevTools on the page that told you there was nothing here.', 'color:#6b7280; font-size:13px;');
-    console.log('%c We respect the commitment.', 'color:#6b7280; font-size:13px;');
-    console.log('%c There\'s a Konami code. ↑↑↓↓←→←→BA', 'color:#2563eb; font-weight:bold; font-size:13px;');
-    console.log('%c It unlocks exactly as much as clicking the logo 5 times.', 'color:#9ca3af; font-size:12px;');
-    console.log('%c (nothing)', 'color:#9ca3af; font-size:12px;');
+    // ── KONAMI CODE ───────────────────────────────────────────────
+    const konami = [38,38,40,40,37,39,37,39,66,65];
+    let konamiIdx = 0;
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === konami[konamiIdx]) {
+        if (++konamiIdx === konami.length) {
+          konamiIdx = 0;
+          document.getElementById('easter-egg').style.display = 'flex';
+        }
+      } else { konamiIdx = 0; }
+    });
+
+    // ── DEV TOOLS CONSOLE ────────────────────────────────────────
+    console.log('%c hey.', 'color:#60a5fa; font-size:20px; font-weight:bold; font-family:monospace;');
+    console.log('%c you opened devtools on the page that said there was nothing here.', 'color:#94a3b8; font-size:13px;');
+    console.log('%c that just added 25% to your suspicion meter. you did that.', 'color:#f87171; font-size:13px; font-weight:bold;');
+    console.log('%c ─────────────────────────────────────────', 'color:#1e293b;');
+    console.log('%c if you are hiring devs: github.com/LordTenderBacon', 'color:#60a5fa; font-weight:bold; font-size:13px;');
+    console.log('%c jordan will see this. he checks the console on every site he visits.', 'color:#475569; font-size:12px;');
+    console.log('%c we know because he is exactly like you.', 'color:#475569; font-size:12px;');
   </script>
 
 </body>
